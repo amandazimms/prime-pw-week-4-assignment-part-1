@@ -101,8 +101,8 @@ function isFirstLetter(letter, string) {
   }
 
 }
-console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
-console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
+console.log( 'isFirstLetter - (a-apple) - should say true', isFirstLetter('a', 'apple') );
+console.log( 'isFirstLetter - (z-apple) - should say false', isFirstLetter('z', 'apple') );
 
 
 // 8b. I was not sure if the above solution 8a counts as cheating - in the
@@ -110,31 +110,84 @@ console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
 //    feels similar to charAt. So here is another way to solve without charAt:
 function isFirstLetterAnalog(letter, string) {
 
-  
-  if (string.charAt(0) === letter){
+
+  //turn the string into an array
+  string = string.split('');
+  //compare the first index in string array (first leter) to 'letter'
+  if (string[0] === letter) {
     return true;
   } else {
     return false;
   }
-
 }
-console.log( 'isFirstLetter - should say true', isFirstLetter('a', 'apple') );
-console.log( 'isFirstLetter - should say false', isFirstLetter('z', 'apple') );
+console.log( 'isFirstLetter - (b-banana) - should say true', isFirstLetter('b', 'banana') );
+console.log( 'isFirstLetter - (w-banana) - should say false', isFirstLetter('w', 'banana') );
 
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll( ) {
+function sumAll( array ) {
+
   let sum = 0
-  // TODO: loop to add items
+  
+  for (const num of array) {
+    sum += num;
+  }
+
   return sum;
 }
+console.log('sumAll(testArray), where testArray = [0,1,2,3], returns:', sumAll(testArray));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
+function sumAllPositives( array ) {
 
+  let sum = 0
+  
+  for (const num of array) {
+    if (num > 0) {
+      sum += num;
+    }
+  }
 
+  return sum;
+}
+let arrayWithNegs = [-2, -1, 0, 1, 2, 3]
+console.log('sumAllPositives(arrayWithNegs), where arrayWithNegs = [-2, -1, 0, 1, 2, 3], returns:', sumAllPositives(arrayWithNegs));
+console.log('verifying that arrayWithNegs is intact. arrayWithNegs:', arrayWithNegs);
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
 //     CodeWars(https://www.codewars.com/). Then describe it 
 //     here in a comment, write the function, and test it!
+
+//from Edabit: https://edabit.com/challenge/tYHkTdFrEmWfxpPKF
+//Matchstick Houses
+//This challenge will help you interpret mathematical relationships both algebraically and geometrically.
+//Create a function that takes a number (step) as an argument and returns the number of matchsticks in 
+//that step. See step 1, 2 and 3 in the image [on their website].
+
+//notes: Step 0 returns 0 matchsticks.
+//The input (step) will always be a non-negative integer.
+//Think of the input (step) as the total number of houses that have been connected together.
+function matchHouses(step){
+
+  if (step < 0 || Number.isInteger(step) === false) { //test if the input (step) is negative or not an integer;
+    console.log("please enter a positive integer"); //if so, print that we want only positive integers.
+  }
+  else {
+    //if step is 0, return 0 (special case)
+    if (step === 0) {
+      return 0;
+    } else {
+      //all but the first house have 5 sticks (in one way to visualise this); first has 6.
+      let sticksPerHouse = 5;
+      return (sticksPerHouse * step) + 1;
+    }
+  }
+}
+console.log('matchHouses(0):', matchHouses(0));
+console.log('matchHouses(1):', matchHouses(1));
+console.log('matchHouses(2):', matchHouses(2));
+console.log('matchHouses(3):', matchHouses(3));
+console.log('matchHouses(50):', matchHouses(50));
+
