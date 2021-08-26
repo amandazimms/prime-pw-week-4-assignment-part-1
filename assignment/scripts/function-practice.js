@@ -71,6 +71,7 @@ console.log('getLast(testArray), where testArray = [0,1,2,3], returns:', getLast
 function find( value, array ){
 
   let foundMatch = false; //declare and set a bool to false
+  
   for (const item of array) { //loop through items in array
       if (value === item) { //if any of the items are equal to value
         foundMatch = true; //set that bool to true
@@ -140,20 +141,20 @@ console.log('sumAll(testArray), where testArray = [0,1,2,3], returns:', sumAll(t
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
 //     return an empty array. Note: The input array should not change.
-function sumAllPositives( array ) {
+function getAllPositives( array ) {
 
-  let sum = 0
-  
+  let posArray = [];
+
   for (const num of array) {
     if (num > 0) {
-      sum += num;
+      posArray.push(num);
     }
   }
 
-  return sum;
+  return posArray;
 }
 let arrayWithNegs = [-2, -1, 0, 1, 2, 3]
-console.log('sumAllPositives(arrayWithNegs), where arrayWithNegs = [-2, -1, 0, 1, 2, 3], returns:', sumAllPositives(arrayWithNegs));
+console.log('getAllPositives(arrayWithNegs), where arrayWithNegs = [-2, -1, 0, 1, 2, 3], returns:', getAllPositives(arrayWithNegs));
 console.log('verifying that arrayWithNegs is intact. arrayWithNegs:', arrayWithNegs);
 
 // 11. Pick a problem from Edabit(https://edabit.com/) or 
